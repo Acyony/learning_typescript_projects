@@ -1,6 +1,11 @@
 # Getting Started with TypeScript
+<br>
+<br>
 
-This is my first project I made using typeScript.
+<h3>Todo List combining react with typescript</h3>
+<br>
+
+>This is my first project I made using typeScript.
 
 
 
