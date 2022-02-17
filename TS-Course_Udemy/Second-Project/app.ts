@@ -1,23 +1,18 @@
-function combine(input1: number | string, input2: number | string, resultConversion: string) {
-    let result;
-    if (typeof input1 === 'number' && typeof input2 === 'number') {
-        result = input1 + input2;
-    } else {
-        result = input1.toString() + input2.toString()
-    }
-
-    if (resultConversion === 'as-number') {
-        return +result;
-    } else {
-        return result;
-    }
+function add(num1: number, num2: number) {
+    return num1 + num2;
 }
 
-const combinedNames = combine('Max', 'Anna', 'as-text');
-console.log(combinedNames)
 
-const combinedStringAges = combine('40', '56', 'as-number');
-console.log(combinedStringAges)
+function printResult(num: number): void { //: void = means this function doesn't return anything
+    console.log('Result: ' + num)
+}
 
-const combinedAges = combine(40, 56, 'as-number');
-console.log(combinedAges)
+printResult(add(12, 67));
+
+
+// Function types allows us to describe which type of functions I want use
+let combineValues: (a:number, b:number) => number;
+combineValues = add;
+// combineValues = printResult;
+
+console.log(combineValues(8, 8))
