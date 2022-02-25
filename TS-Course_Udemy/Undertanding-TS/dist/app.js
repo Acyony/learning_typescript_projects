@@ -21,8 +21,8 @@ const hobbies = ['reading', 'crocheting', 'traveling'];
 const activeHobbies = ['fotography', ...hobbies];
 activeHobbies.push(...hobbies);
 const person = {
-    name: 'Alcione',
-    age: 33
+    firstName: 'Alcione',
+    ageUser: 33
 };
 const copiedPerson = Object.assign({}, person);
 console.log(copiedPerson);
@@ -33,4 +33,30 @@ const adding = (...numbers) => {
 };
 const addNumbers = adding(5, 15, 56, 25);
 console.log('addNumbers: ', addNumbers);
+const [hobby1, hobby2, ...remainingHobbies] = hobbies;
+console.log(hobbies, hobby1, hobby2);
+const { firstName, ageUser } = person;
+console.log(firstName, ageUser);
+class Departments {
+    constructor(n) {
+        this.employees = [];
+        this.name = n;
+    }
+    describe() {
+        console.log('Department: ' + this.name);
+    }
+    addEmployee(employee) {
+        this.employees.push(employee);
+    }
+    printEmployeeInformation() {
+        console.log(this.employees.length);
+        console.log(this.employees);
+    }
+}
+const accounting = new Departments('Accounting');
+accounting.describe();
+accounting.addEmployee('Donald Duck');
+accounting.addEmployee('Mickey Mouse');
+accounting.describe();
+accounting.printEmployeeInformation();
 //# sourceMappingURL=app.js.map
