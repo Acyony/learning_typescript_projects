@@ -11,7 +11,6 @@ const button = document.querySelector('button')!; // ! not null value
 
 function clickHandler(message: string) {
     console.log('Clicked!' + message);
-
 }
 
 // use either ! or if condition
@@ -35,8 +34,8 @@ const activeHobbies = ['fotography', ...hobbies];
 activeHobbies.push(...hobbies);
 
 const person = {
-    name: 'Alcione',
-    age: 33
+    firstName: 'Alcione',
+    ageUser: 33
 
 }
 
@@ -53,3 +52,46 @@ const adding = (...numbers: number[]) => {
 
 const addNumbers = adding(5, 15, 56, 25);
 console.log('addNumbers: ', addNumbers)
+
+
+//Array and Object Destructuring
+const [hobby1, hobby2, ...remainingHobbies] = hobbies;
+console.log(hobbies, hobby1, hobby2);
+
+const {firstName, ageUser} = person;
+console.log(firstName, ageUser);
+
+// working with classes
+class Departments {
+    name: string;
+    private employees: string[] = []; // private means it can be accessed only inside the class "Department"
+
+    constructor(n: string) {
+        this.name = n;
+    }
+
+    describe(this: Departments) {
+        console.log('Department: ' + this.name);
+    }
+
+    addEmployee(employee: string) {
+        this.employees.push(employee);
+    }
+
+    printEmployeeInformation() {
+        console.log(this.employees.length);
+        console.log(this.employees);
+    }
+}
+
+const accounting = new Departments('Accounting');
+accounting.describe();
+
+// const accountingCopy = {name: 'Mickey', describe: accounting.describe};
+// accountingCopy.describe();
+
+accounting.addEmployee('Donald Duck');
+accounting.addEmployee('Mickey Mouse');
+
+accounting.describe();
+accounting.printEmployeeInformation();
