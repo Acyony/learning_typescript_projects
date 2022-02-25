@@ -38,12 +38,13 @@ console.log(hobbies, hobby1, hobby2);
 const { firstName, ageUser } = person;
 console.log(firstName, ageUser);
 class Departments {
-    constructor(n) {
+    constructor(id, name) {
+        this.id = id;
+        this.name = name;
         this.employees = [];
-        this.name = n;
     }
     describe() {
-        console.log('Department: ' + this.name);
+        console.log(`Department (${this.id}): ${this.name}`);
     }
     addEmployee(employee) {
         this.employees.push(employee);
@@ -53,10 +54,35 @@ class Departments {
         console.log(this.employees);
     }
 }
-const accounting = new Departments('Accounting');
-accounting.describe();
-accounting.addEmployee('Donald Duck');
-accounting.addEmployee('Mickey Mouse');
-accounting.describe();
-accounting.printEmployeeInformation();
+class ITDepartment extends Departments {
+    constructor(id, admins) {
+        super(id, 'IT');
+        this.admins = admins;
+        this.admins = admins;
+    }
+}
+class AccountingDepartment extends Departments {
+    constructor(id, reports) {
+        super(id, 'IT');
+        this.reports = reports;
+    }
+    addReport(text) {
+        this.reports.push(text);
+    }
+    printReports() {
+        console.log(this.reports);
+    }
+}
+const it = new ITDepartment('d1', ['Rose', 'Lilly', 'Lisa', 'Jenny']);
+it.describe();
+it.addEmployee('Donald Duck');
+it.addEmployee('Mickey Mouse');
+it.describe();
+it.printEmployeeInformation();
+console.log(it);
+const accounting = new AccountingDepartment('d2', []);
+accounting.addReport('Something went wrong!');
+accounting.addReport('Reset the server!');
+accounting.addReport('Reset the password!');
+accounting.printReports();
 //# sourceMappingURL=app.js.map
