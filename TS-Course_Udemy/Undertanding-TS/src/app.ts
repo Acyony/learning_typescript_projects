@@ -63,15 +63,17 @@ console.log(firstName, ageUser);
 
 // working with classes
 class Departments {
-    name: string;
+    // private name: string;
+    // private id: string;
     private employees: string[] = []; // private means it can be accessed only inside the class "Department"
 
-    constructor(n: string) {
-        this.name = n;
+    constructor(private readonly id: string, public name: string) {
+        // this.name = name;
+        // this.id = id;
     }
 
     describe(this: Departments) {
-        console.log('Department: ' + this.name);
+        console.log(`Department (${this.id}): ${this.name}`);
     }
 
     addEmployee(employee: string) {
@@ -84,14 +86,49 @@ class Departments {
     }
 }
 
-const accounting = new Departments('Accounting');
-accounting.describe();
+
+// Class Inheritance
+class ITDepartment extends Departments {
+    // admins: string[];
+
+    constructor(id: string, public admins: string[]) {
+        super(id, 'IT');
+        this.admins = admins;
+    }
+}
+
+
+class AccountingDepartment extends Departments {
+    constructor(id: string, private reports: string[]) {
+        super(id, 'IT');
+    }
+
+    addReport(text: string) {
+        this.reports.push(text)
+    }
+
+    printReports() {
+        console.log(this.reports)
+    }
+}
+
+
+// const accounting = new Departments('d1', 'Accounting');
+const it = new ITDepartment('d1', ['Rose', 'Lilly', 'Lisa', 'Jenny']);
+it.describe();
 
 // const accountingCopy = {name: 'Mickey', describe: accounting.describe};
 // accountingCopy.describe();
 
-accounting.addEmployee('Donald Duck');
-accounting.addEmployee('Mickey Mouse');
+it.addEmployee('Donald Duck');
+it.addEmployee('Mickey Mouse');
 
-accounting.describe();
-accounting.printEmployeeInformation();
+it.describe();
+it.printEmployeeInformation();
+console.log(it);
+
+const accounting = new AccountingDepartment('d2', []);
+accounting.addReport('Something went wrong!');
+accounting.addReport('Reset the server!');
+accounting.addReport('Reset the password!');
+accounting.printReports();
