@@ -39,14 +39,20 @@ type Numeric = number | boolean;
 type Universal = Combinable | Numeric;
 
 
-//Type guards = A type guard is some expression that performs a runtime check that guarantees the type in some scope.
+//Type guards = A type guard is some expression that performs a runtime check that guarantees the type in some scope. With type guards you avoid runtime errors by checking types before you try to do something with the values.
 // typeof is in this example a type guards
+function addFoo(a: number, b: number): number;
+function addFoo(a: string, b: string): string;
+
 function addFoo(a: Combinable, b: Combinable) {
     if (typeof a === 'string' || typeof b === 'string') {
         return a.toString() + b.toString();
     }
     return a + b;
 }
+
+const result = addFoo('Donald', 'Duck');
+console.log(result)
 
 class Car {
     drive() {
@@ -105,5 +111,39 @@ function moveAnimal(animal: Animal) {
     console.log('Moving at speed: ' + speed);
 }
 
-moveAnimal({type: 'bird', flyingSpeed: 10})
-moveAnimal({type: 'horse', runningSpeed: 60})
+moveAnimal({type: 'bird', flyingSpeed: 10});
+moveAnimal({type: 'horse', runningSpeed: 60});
+
+
+// Type casting
+// const userInputElement = <HTMLInputElement>document.getElementById('user-input')!;
+/*const userInputElement = <HTMLInputElement>document.getElementById('user-input')! as HTMLInputElement;
+
+if (userInputElement) {
+    userInputElement.value = 'Hi Mickey!';
+}*/
+
+// another option
+const userInputElement = document.getElementById('user-input');
+
+if (userInputElement) {
+    (userInputElement as HTMLInputElement).value = 'Hi Donald!';
+}
+
+
+// Optional chaining
+const fetchedUserData = {
+    id: 'u1',
+    name: 'Lilo',
+    job: {title: 'CEO', description: 'My own company'},
+};
+
+console.log(fetchedUserData?.job?.title);
+
+
+//Nullish Coalescing
+// const userInputFoo = undefined;
+const userInputFoo = ' .... ';
+
+const storedData  = userInputFoo ?? 'DEFAULT';
+console.log(storedData)
