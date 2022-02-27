@@ -1,4 +1,5 @@
 "use strict";
+var _a;
 const employee1 = {
     name: 'Adam',
     privileges: ['Create new server', ' Update new database'],
@@ -19,6 +20,8 @@ function addFoo(a, b) {
     }
     return a + b;
 }
+const result = addFoo('Donald', 'Duck');
+console.log(result);
 class Car {
     drive() {
         console.log('Driving...');
@@ -55,4 +58,17 @@ function moveAnimal(animal) {
 }
 moveAnimal({ type: 'bird', flyingSpeed: 10 });
 moveAnimal({ type: 'horse', runningSpeed: 60 });
+const userInputElement = document.getElementById('user-input');
+if (userInputElement) {
+    userInputElement.value = 'Hi Donald!';
+}
+const fetchedUserData = {
+    id: 'u1',
+    name: 'Lilo',
+    job: { title: 'CEO', description: 'My own company' },
+};
+console.log((_a = fetchedUserData === null || fetchedUserData === void 0 ? void 0 : fetchedUserData.job) === null || _a === void 0 ? void 0 : _a.title);
+const userInputFoo = ' .... ';
+const storedData = userInputFoo !== null && userInputFoo !== void 0 ? userInputFoo : 'DEFAULT';
+console.log(storedData);
 //# sourceMappingURL=app.js.map
