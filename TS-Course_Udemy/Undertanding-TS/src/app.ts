@@ -1,20 +1,27 @@
-// The interface is used to describe the object structure - defines how an object look like
-// allow to define the structure of an object
-interface Person {
+type Admin = {
     name: string;
-    age: number;
-
-    greet(phrase: string): void;
+    privileges: string[];
 }
 
-let user1: Person;
-
-user1 = {
-    name: 'Minnie',
-    age: 65,
-    greet(phrase: string) {
-        console.log(phrase + ' ' + this.name + '.' + ' I am ' + this.age)
-    }
+type Employee = {
+    name: string;
+    startDate: Date;
 }
 
-user1.greet('Hi there - I am')
+// Intersection Types
+
+type ElevatedEmployee = Admin & Employee;
+
+const employee1: ElevatedEmployee = {
+    name: 'Adam',
+    privileges: ['Create new server', 'Udate new database'],
+    startDate: new Date()
+}
+
+console.log(employee1);
+
+type Combinable = string | number;
+type Numeric = number | boolean;
+
+type Universal = Combinable | Numeric;
+

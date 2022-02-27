@@ -1,11 +1,8 @@
 "use strict";
-let user1;
-user1 = {
-    name: 'Minnie',
-    age: 65,
-    greet(phrase) {
-        console.log(phrase + ' ' + this.name + '.' + ' I am ' + this.age);
-    }
+const employee1 = {
+    name: 'Adam',
+    privileges: ['Create new server', 'Udate new database'],
+    startDate: new Date()
 };
-user1.greet('Hi there - I am');
+console.log(employee1);
 //# sourceMappingURL=app.js.map
