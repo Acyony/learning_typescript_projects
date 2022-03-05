@@ -42,4 +42,44 @@ function extractAndConvert<T extends object, U extends keyof T>(obj: T, key: U) 
 extractAndConvert({name: 'Alcione'}, 'name');
 
 // generic classes
+// It allows to build a flexible but also strongly typed class
+class DataStorage<T extends string | number| boolean> {
+    private data: T[] = [];
 
+    addItem(item: T) {
+        this.data.push(item);
+    }
+
+    removeItem(item: T) {
+        if (this.data.indexOf(item) === -1) {
+            return;
+        }
+        this.data.splice(this.data.indexOf(item), 1);
+    }
+
+    getItems() {
+        return [...this.data];
+    }
+}
+
+// If I can store string
+const textStorage = new DataStorage<string>();
+textStorage.addItem('Mickey');
+textStorage.addItem('Donald Duck');
+textStorage.removeItem('Donald Duck');
+console.log(textStorage.getItems());
+
+
+// Or if I can store numbers
+const numberStorage = new DataStorage<number | string>();
+
+
+//
+// const objStorage = new DataStorage<object>();
+// const angelinaObj = {name: 'Algelina'};
+// const bradObj = {name: 'Brad'};
+// objStorage.addItem(angelinaObj);
+// objStorage.addItem(bradObj);
+// // =^.^=
+// objStorage.removeItem(bradObj);
+// console.log(objStorage.getItems());
