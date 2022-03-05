@@ -16,4 +16,9 @@ function countAndDescribe(element) {
     return [element, descriptionText];
 }
 console.log(countAndDescribe('Hi there!'));
+console.log(countAndDescribe(''));
+function extractAndConvert(obj, key) {
+    return 'Value: ' + obj[key];
+}
+extractAndConvert({ name: 'Alcione' }, 'name');
 //# sourceMappingURL=app.js.map

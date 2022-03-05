@@ -32,3 +32,14 @@ function countAndDescribe<T extends Lengthy>(element: T): [T, string] {
 }
 
 console.log(countAndDescribe('Hi there!'));
+console.log(countAndDescribe(''));
+
+// generic types with keyof
+function extractAndConvert<T extends object, U extends keyof T>(obj: T, key: U) {
+    return 'Value: ' + obj[key];
+}
+
+extractAndConvert({name: 'Alcione'}, 'name');
+
+// generic classes
+
